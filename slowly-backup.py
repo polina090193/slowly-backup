@@ -69,6 +69,7 @@ if friends.status_code == 200:
                   print(f"{attachment_name} saved!")
                 else:
                     print(f"Failed to download the attachment: {attachment_name}")
+                    attachment.raise_for_status()
 
           print(f"{letter_date_str} done!\n")
 
@@ -76,6 +77,8 @@ if friends.status_code == 200:
       
       else:
         print("Failed to download the letters.")
+        all_letters.raise_for_status()
     
 else:
   print("Failed to download the friends list.")
+  friends.raise_for_status()
